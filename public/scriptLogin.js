@@ -16,7 +16,7 @@ document.getElementById("register-button").addEventListener("click", () => {
     const username = document.getElementById("register-username").value;
     const password = document.getElementById("register-password").value;
 
-    fetch("http://localhost:5000/register", {
+    fetch("sql12.freemysqlhosting.net/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nama, username, password }),
@@ -37,7 +37,7 @@ document.getElementById("login-button").addEventListener("click", () => {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
 
-    fetch("http://localhost:5000/login", {
+    fetch("sql12.freemysqlhosting.net/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
