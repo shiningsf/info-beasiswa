@@ -1,6 +1,6 @@
 {
-  "main":"index.js",
-  "script":{
+  "main": "index.js",
+  "script": {
     "start": "node index.js"
   },
   "dependencies": {
