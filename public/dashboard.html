@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Beasiswa</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" href="./img/logo.jpeg">
+    <!-- Link Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Link Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body>
+    <div class="container-content">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" id="logo"><img src="./img/logo.jpeg" alt="logo"></a>
+                <div class="text">Informasi</div>
+                <div class="text" style="color: crimson !important;">Beasiswa</div>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#kategori">Kategori</a>
+                            <ul class="dropdown">
+                                <li>
+                                    <a href="#beasiswa1">Beasiswa S1</a>
+                                </li>
+                                <li>
+                                    <a href="#beasiswa2">Beasiswa S2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#news">News</a>
+                        </li>
+                    </ul>
+                    <button class="button" type="button"><a href="./login.html">Log Out <i
+                                class="bi bi-door-open-fill"></i></a></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Akhir Navbar -->
+
+    <!-- Section Home -->
+    <section class="homepage" id="home">
+        <div class="content">
+            <div class="text">
+                <h1 style="text-shadow: 10px 10px 10px #758694; color: #FFF;">WEBSITE INFORMASI BEASISWA</h1>
+                <p style="font-size: 25px; text-shadow: 10px 10px 10px #201658;">Selamat datang di website beasiswa,
+                    penyedia informasi beasiswa dalam mewadahi pelajar indonesia untuk mempersiapkan studi lanjut di
+                    dalam negeri. Website ini akan membantumu untuk menemukan beasiswa yang kamu inginkan.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Akhir Section Home -->
+
+    <!-- Section About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="about-content">
+                        <p class="badge fs-6 text-primary"
+                            style="background-color: #AEE2FF; padding: 10px; border-radius: 10px; margin-top: 30px; font-size: 20px !important;">
+                            Raih Impian, Wujudkan Masa Depan Bersama Beasiswa <i
+                                class="bi bi-emoji-wink-fill text-danger"></i>
+                        </p>
+                        <h1 class="text-about-bold fw-bold text-dark mt-1">Beasiswa Cemerlang, Solusi Tepat untuk Meraih
+                            Pendidikan dan Masa Depan Gemilang.
+                            <h1>
+                    </div>
+                    <h4 class="text-reguler fw-normal text-secondary">Selamat datang di platform informasi beasiswa
+                        terpercaya! Kami hadir untuk membantu Anda menemukan berbagai peluang beasiswa, khususnya di
+                        dalam negeri. Kami percaya bahwa pendidikan adalah hak semua orang, dan melalui beasiswa, kami
+                        ingin membuka jalan bagi siapa saja yang memiliki tekad kuat dan prestasi untuk meraih masa
+                        depan yang lebih baik. Dengan adanya website ini, kami berharap dapat menjadi partner Anda dalam
+                        menemukan beasiswa yang sesuai dan meraih cita-cita akademik serta profesional yang lebih
+                        tinggi.</i>
+                    </h4>
+                    <div class="about-button mt-5">
+                        <a href="#beasiswa1" class="btn">Get Started ! <i class="bi bi-arrow-down"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-img mt-4" data-aos="zoom-in-up">
+                        <img src="./img/3.png" alt="logo" style="width: 900px; border-radius: 50px;" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Akhir Section About -->
+
+
+    <!-- Section Kategori Beasiswa S1 -->
+    <section class="kategori" id="beasiswa1">
+        <div class="container">
+            <h2 class="heading text-center">Beasiswa S1</h2>
+            <div class="row justify-content-center mt-4">
+                <!-- Card Beasiswa S1 Bintang Mandiri -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="./img/a1.jpg" class="card-img-top" alt="Beasiswa S1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beasiswa Bintang Mandiri</h5>
+                            <p class="card-text">Dapatkan informasi lengkap mengenai Beasiswa Bintang Mandiri.
+                            </p>
+                            <button type="button" class="button-detail" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal2">
+                                Lihat Detail <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Beasiswa Bintang Mandiri</h5>
+                                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-modal">
+                                    <p>Beasiswa Bintang Mandiri 2024 merupakan program beasiswa yang diluncurkan oleh
+                                        Lembaga Amil Zakat Nasional (LAZNAS) Mandiri Amal Insani (MAI). Beasiswa ini
+                                        diperuntukkan bagi mahasiswa yang sedang menempuh pendidikan Strata-1 (S-1).
+                                        Beasiswa Bintang Mandiri adalah program pemberian pembinaan kepemimpinan dan
+                                        uang saku yang diperuntukkan bagi mahasiswa S-1 dari berbagai universitas di
+                                        seluruh Indonesia.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <p>Beberapa manfaat dari Beasiswa Bintang Mandiri antara lain :
+                                    <ul style="margin-top: -25px;">
+                                        <li>Bantuan dana pendidikan sebesar Rp9 juta per orang yang penyalurannya dibagi
+                                            per bulan selama 12 bulan.</li>
+                                        <li>Leadership coaching, yaitu program pembinaan kepemimpinan untuk mahasiswa.
+                                        </li>
+                                        <li>Development program, yaitu rangkaian program pengembangan diri yang mencakup
+                                            berbagai aspek keterampilan dan potensi mahasiswa.</li>
+                                        <li>Brand Ambassador MAI Foundation. Kesempatan menjadi duta MAI Foundation
+                                            untuk terlibat aktif dalam kegiatan sosial.</li>
+                                        <li>Volunteer dan networking. Kesempatan untuk terlibat sebagai relawan dan
+                                            memperluas jaringan hubungan dengan para penerima beasiswa di seluruh
+                                            Indonesia.</li>
+                                    </ul>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Syarat Beasiswa Bintang Mandiri</h5>
+                                    <ol>
+                                        <li><b>Persyaratan Umum</b>
+                                            <ul>
+                                                <li>Beragama Islam</li>
+                                                <li>Mahasiswa S1 dari seluruh kampus di Indonesia</li>
+                                                <li>IPK minimal 3.00 dengan catatan bagi mahasiswa baru menggunakan
+                                                    nilai akhir rapor semester genap</li>
+                                                <li>Aktif berorganisasi</li>
+                                                <li>Bersedia mengikuti pembinaan selama program berlangsung</li>
+                                            </ul>
+                                        </li>
+                                        <li><b>Persyaratan Berkas</b>
+                                            <ul>
+                                                <li>Kartu Tanda Penduduk (KTP)</li>
+                                                <li>Kartu Tanda Mahasiswa (KTM)</li>
+                                                <li>Pakta integritas</li>
+                                                <li>Dream mapping</li>
+                                                <li>Transkrip nilai</li>
+                                                <li>Esai social project</li>
+                                                <li>Twibbon</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Cara Daftar Beasiswa Bintang Mandiri
+                                    </h5>
+                                    <ol>
+                                        <li>Follow Instagram Mandiri Amal Insani Foundation @mai_foundation dan Mandiri
+                                            Amal Insani Institute @mai_institute.</li>
+                                        <li>Mention 5 teman di postingan pendaftaran Beasiswa Bintang Mandiri 2024 yang
+                                            terdapat pada akun @mai_institute.</li>
+                                        <li>Unggah twibbon di Instagram dengan keterangan foto: "Impactful Youth for
+                                            Better Future" dan tag akun @mai_foundation serta @mai_institute pada foto
+                                            tersebut.</li>
+                                        <li>Twibbon dapat diakses melalui tautan twb.nz/bbm24.</li>
+                                        <li>Setelah mengikuti langkah-langkah di atas, peserta dapat mengisi formulir
+                                            pendaftaran melalui tautan bit.ly/DaftarBBM_MAI24.</li>
+                                        <li>Pada formulir pendaftaran, isi alamat email aktif, nama lengkap, Nomor Induk
+                                            Kependudukan (NIK), nomor ponsel dengan WhatsApp aktif, jenis kelamin,
+                                            tanggal lahir, dan agama. </li>
+                                        <li>Selanjutnya, isi asal kota/kabupaten, asal provinsi, nama universitas,
+                                            jurusan, tahun masuk kuliah, semester, akun media sosial, serta jumlah
+                                            followers Instagram.</li>
+                                        <li>Setelah itu, pilih opsi pada menu dropdown dari mana peserta mendapat
+                                            informasi mengenai Beasiswa Bintang Mandiri 2024. Pilih salah satu opsi yang
+                                            tersedia.</li>
+                                        <li>Periksa kembali seluruh data dengan benar. Jika sudah, klik tombol "Kirim"
+                                        </li>
+                                        <li>Proses pendaftaran selesai. Peserta bisa menunggu pemberitahuan selanjutnya
+                                            melalui akun @mai_foundation dan @mai_institute.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card beasiswa S1 Cendekia BAZNAZ -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="./img/b1.jpg" class="card-img-top" alt="Beasiswa S1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beasiswa Cendekia BAZNAZ</h5>
+                            <p class="card-text">Dapatkan informasi lengkap mengenai Beasiswa Cendekia BAZNAZ.
+                            </p>
+                            <button type="button" class="button-detail" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal3">
+                                Lihat Detail <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Beasiswa Cendekia BAZNAZ</h5>
+                                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-modal">
+                                    <p>Beasiswa BAZNAS adalah beasiswa yang dikelola oleh Badan Amil Zakat Nasional
+                                        untuk siswa dan mahasiswa yang berasal dari keluarga kurang mampu.
+                                        Dengan berbagai jenis beasiswa yang tersedia, BAZNAS memberikan kesempatan bagi
+                                        generasi muda Indonesia untuk mendapatkan pendidikan yang lebih baik, tanpa
+                                        terbebani oleh masalah finansial.
+                                        Dalam menyalurkan dana bantuan, BAZNAS membentuk kerja sama dengan ratusan
+                                        perguruan tinggi se-Indonesia.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Syarat Mendaftar Beasiswa BAZNAS</h5>
+                                    <p>Secara garis besar, berikut adalah beberapa persyaratan umum yang perlu kamu
+                                        ketahui:</p>
+                                    <ol>
+                                        <li>Warga Negara Indonesia (WNI). Beasiswa ini hanya terbuka untuk warga negara
+                                            Indonesia yang memiliki identitas resmi.
+                                        </li>
+                                        <li>Mahasiswa aktif semester 4 atau maksimum semester 5.
+                                        </li>
+                                        <li>IPK minimal 2,50 (untuk Beasiswa Ma'had Aly) dan 3,00 (untuk Beasiswa
+                                            Cendekia Dalam Negeri) dalam skala 4,00.</li>
+                                        <li>Tidak sedang mendapat beasiswa serupa dari instansi lain.</li>
+                                        <li>Berasal dari keluarga kurang mampu yang dibuktikan dengan surat keterangan
+                                            dari pihak berwenang.</li>
+                                        <li>Surat rekomendasi, misalnya surat rekomendasi dari sekolah atau lembaga
+                                            pendidikan yang menyatakan kelayakan calon penerima beasiswa.</li>
+                                        <li>Prestasi akademik, khususnya untuk pendaftar kategori prestasi di Beasiswa
+                                            Cendekia Dalam Negeri.</li>
+                                        <li>Surat keterangan sehat dari dokter atau fasilitas kesehatan lainnya.</li>
+                                        <li>Memiliki komitmen untuk kembali mengabdi, baik di daerah asal atau lembaga
+                                            terkait setelah menyelesaikan pendidikan.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Beasiswa S1 Bank Indonesia -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="./img/c1.jpeg" class="card-img-top" alt="Beasiswa S1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beasiswa Bank Indonesia</h5>
+                            <p class="card-text">Dapatkan informasi lengkap mengenai Beasiswa Bank Indonesia.
+                            </p>
+                            <button type="button" class="button-detail" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal4">
+                                Lihat Detail <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Beasiswa Bank Indonesia</h5>
+                                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-modal">
+                                    <p>beasiswa unggulan BI merupakan beasiswa ekslusive yang diberikan pada PTN
+                                        unggulan yang bekerjasama dengan Bank Indonesia, sedangkan beasiswa regular
+                                        merupakan beasiswa BI yang diberikan kepada PTN/PTS/SMK Vokasi hasil kerjasama
+                                        dengan Bank Indonesia melalui proses pengajuan sebagai penerima beasiswa Bank
+                                        Indonesia.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Syarat Beasiswa Bank Indonesia</h5>
+                                    <ol>
+                                        <li>Mahasiswa aktif untuk jenjang D3, D4, atau S1 yang dibuktikan dengan KTM
+                                            aktif
+                                        </li>
+                                        <li>Telah menempuh minimal 24 SKS
+                                        </li>
+                                        <li>Maksimal berusia 23 tahun untuk S1 dan D4, sedangkan D3 maksimal berumur 22
+                                            tahun</li>
+                                        <li>Tidak sedang menerima beasiswa lain</li>
+                                        <li>Aktif dalam kegiatan sosial yang berdampak untuk masyarakat luas</li>
+                                        <li>Bersedia aktif dalam GenBI</li>
+                                    </ol>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">syarat khusus yang harus diperhatikan
+                                        oleh pendaftar disesuaikan dengan jenis beasiswa yang ingin dituju, yaitu:</h5>
+                                    <ol>
+                                        <li><b>Beasiswa Unggulan</b>
+                                            <ul>
+                                                <li>Mahasiswa S1 dan D4</li>
+                                                <li>Mengumpulkan salinan sertifikat/piagam yang pernah diraih</li>
+                                                <li>Memiliki nilai IPK minimal 3.50</li>
+                                                <li>Menulis surat motivasi dan rencana karir dalam bahasa Inggris</li>
+                                                <li>Memiliki surat rekomendasi dari 2 tokoh dari akademik maupun non
+                                                    akademik</li>
+                                                <li>Tidak sedang menerima beasiswa lain</li>
+                                                <li>Memiliki sertifikat TOEFL dengan nilai minimal 500, TOEFL IBT
+                                                    minimal 62, TOEFL CBT minimal 173, atau IELTS minimal 6.0</li>
+                                            </ul>
+                                        </li>
+                                        <li><b>Beasiswa Reguler</b>
+                                            <ul>
+                                                <li>Mahasiswa S1 atau D4</li>
+                                                <li>Memiliki nilai IPK minimal 3.00</li>
+                                                <li>Menulis resume menggunakan bahasa Indonesia</li>
+                                            </ul>
+                                        </li>
+                                        <li><b>Beasiswa D3 Reguler</b>
+                                            <ul>
+                                                <li>Memiliki IPK minimal 3.00</li>
+                                                <li>Berasal dari keluarga dengan ekonomi kelas menengah ke bawah yang
+                                                    dibuktikan dengan SKTM dan slip gaji</li>
+                                                <li>Surat rekomendasi</li>
+                                                <li>Resume pribadi menggunakan bahasa Indonesia</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card beasiswa S1 Djarum Indonesia Plus -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="./img/d.jpeg" class="card-img-top" alt="Beasiswa S1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beasiswa Djarum Beasiswa Plus</h5>
+                            <p class="card-text">Dapatkan informasi lengkap mengenai Djarum Beasiswa Plus.
+                            </p>
+                            <button type="button" class="button-detail" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal5">
+                                Lihat Detail <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Beasiswa Bank Indonesia</h5>
+                                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-modal">
+                                    <p>Beasiswa Djarum Plus adalah program dari Djarum Foundation untuk membangun
+                                        Indonesia dari sektor pendidikan. Didirikan pada tahun 1984, kini program ini
+                                        telah dinikmati oleh 13.397 mahasiswa dari 127 perguruan tinggi di seluruh
+                                        Indonesia.
+                                        Jenis beasiswa ini merupakan merit based scholarship. Maka dari itu, Program
+                                        beasiswa ini ditawarkan kepada mahasiswa berprestasi yang telah memasuki tahun
+                                        kedua kuliahnya. Oleh karena itu, periode pembukaan beasiswa ini umumnya akan
+                                        dilaksanakan pada awal tahun.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Syarat Pendaftaran Beasiswa Djarum Plus
+                                    </h5>
+                                    <ol>
+                                        <li>Sedang menempuh pendidikan Strata 1/Diploma 4 di semester IV, dari semua
+                                            disiplin ilmu.
+                                        </li>
+                                        <li>IPK minimum 3.00 pada semester III, serta dapat mempertahankan IPK minimum
+                                            3.00 hingga akhir semester IV.
+                                        </li>
+                                        <li>Aktif mengikuti kegiatan organisasi baik di dalam maupun luar kampus.</li>
+                                        <li>Tidak sedang menerima beasiswa dari pihak lain.</li>
+                                        <li>Kuliah di mitra perguruan tinggi Program Djarum Beasiswa Plus</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Akhir Section Kategori Beasiswa S1 -->
+
+    <!-- Section Kategori Beasiswa S2 -->
+    <section class="kategori" id="beasiswa2">
+        <div class="container">
+            <h2 class="heading text-center">Beasiswa S2</h2>
+            <div class="row justify-content-center mt-4">
+                <!-- Card Beasiswa S2 -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="./img/beasiswa-pendidikan-indonesia_169.jpeg" class="card-img-top" alt="Beasiswa S2">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beasiswa S2</h5>
+                            <p class="card-text">Dapatkan informasi lengkap mengenai beasiswa pendidikan indonesia.
+                            </p>
+                            <button type="button" class="button-detail" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal6">
+                                Lihat Detail <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Beasiswa Pendidikan Indonesia</h5>
+                                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-modal">
+                                    <p>Beasiswa Pendidikan Indonesia atau disingkat BPI Kemendikbudristek adalah program
+                                        beasiswa Kerjasama antara Lembaga Pengelola Dana Pendidikan (LPDP) dan
+                                        Kementerian Pendidikan, Kebudayaan, Riset dan Teknologi melalui program
+                                        Perluasan Program LPDP.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Syarat Pendaftaran</h5>
+                                    <ol>
+                                        <li>WNI dibuktikan dengan kartu tanda penduduk aktif yang sah atau paspor yang
+                                            aktif.
+                                        </li>
+                                        <li>Telah memiliki LoA atau letter of acceptance baik bersyarat maupun tak
+                                            bersyarat. Pendaftar S3 Pathway Program tidak diwajibkan memiliki LoA,
+                                            tetapi jika diterima seleksi BPI, awardee harus tanda tangan perjanjian
+                                            untuk mendapatkan LoA maksimal 1 tahun.
+                                        </li>
+                                        <li>Telah lulus SMA/SMK untuk pendaftar D4/S1, lulus S1/D4 untuk pendaftar S2,
+                                            dan lulus S2 untuk pendaftar S3 dengan mencantumkan ijazah atau transkrip
+                                            nilai sesuai ketentuan.</li>
+                                        <li> Untuk pendaftar dengan LoA luar negeri, harus melampirkan sertifikat
+                                            kemampuan bahasa Inggris sesuai ketentuan:
+                                            <ul>
+                                                <li>72 (puluh dua) untuk TOEFL IBT®, 46 (empat puluh enam) untuk PTE
+                                                    Academic atau 5,5 (lima koma lima) untuk IELTS™ bagi pendaftar S1;
+                                                    atau</li>
+                                                <li>80 (delapan puluh) untuk TOEFL IBT®, 58 (lima puluh delapan) untuk
+                                                    PTE Academic, 6,5 (enam koma lima) untuk IELTS™ bagi pendaftar S2
+                                                    dan S3;</li>
+                                            </ul>
+                                        </li>
+                                        <li> Jika pendaftar memiliki LoA untuk kampus yang mengharuskan berbahasa selain
+                                            bahasa Inggris, maka peserta harus melampirkan sertifikat kemampuan bahasa
+                                            asing sesuai bahasa yang ditentukan tersebut dengan minimal skor yang
+                                            disesuaikan dengan syarat dari kampus.</li>
+                                        <li>Bagi pendaftar penyandang disabilitas harus mencantumkan surat resti dari
+                                            rumah sakit serta persetujuan dari wali.</li>
+                                        <li>Mencantumkan surat sehat jasmani dan rohani dari lembaga resmi terkait.</li>
+                                        <li>Mencantumkan surat bebas narkoba dari lembaga resmi terkait.</li>
+                                        <li>Pendaftar tidak sedang melaksanakan pendidikan, kecuali untuk program
+                                            ongoing skema Calon Guru SMK dan S3 PTA Dalam Negeri.</li>
+                                        <li>Pendaftar menandatangani surat pernyataan bersedia dibebastugaskan selama
+                                            menjadi penerima Beasiswa Bergelar dan/atau memiliki surat tugas belajar
+                                            bagi yang berstatus ASN sesuai ketentuan perundang-undangan</li>
+                                        <li> Pendaftar tidak mengambil jenjang program pendidikan yang sama dengan yang
+                                            telah diselesaikan</li>
+                                        <li>Tidak sedang menerima beasiswa dari program lain atau mendapatkan pendanaan
+                                            pendidikan lain.</li>
+                                        <li> Pendaftar menyampaikan esai atau karangan berisi komitmen kontribusi ke
+                                            instansi asal/negara pasca studi meliputi; deskripsi diri, deskripsi peran
+                                            apa yang akan dilakukan, deskripsi cara mewujudkan peran tersebut, dan
+                                            penilaian diri (kekuatan, kelemahan, pengalaman membanggakan, pengalaman
+                                            kurang membanggakan, dan hal-hal yang pernah dilakukan dan disesali) dengan
+                                            ketentuan sebagai berikut:
+                                            <ul>
+                                                <li>ditulis dalam bahasa Indonesia untuk program S1/S2/S3 di dalam
+                                                    negeri;</li>
+                                                <li>ditulis dalam bahasa Inggris untuk program S1/S2/S3 di luar negeri;
+                                                </li>
+                                                <li>jumlah kata 1000-1500 untuk S1;</li>
+                                                <li>jumlah kata 1500-2000 untuk S2 dan S3</li>
+                                            </ul>
+                                        </li>
+                                        <li>Pendaftar menyampaikan rencana studi untuk S2, dengan ketentuan;
+                                            <ul>
+                                                <li>memuat gambaran tentang alasan memilih bidang/prodi;</li>
+                                                <li>topik yang akan ditulis dalam tesis;</li>
+                                                <li>rencana studi dari awal semester hingga selesai;</li>
+                                                <li>aktivitas non akademik yang akan dilaksanakan;</li>
+                                                <li>ditulis dalam bahasa Indonesia untuk program S2 di dalam negeri dan
+                                                    dalam bahasa Inggris untuk program S2 di luar negeri; dan</li>
+                                                <li>ditulis antara 1500 – 2000 kata</li>
+                                            </ul>
+                                        </li>
+                                        <li> Pendaftar menyampaikan proposal penelitian untuk S3, dengan ketentuan;
+                                            <ul>
+                                                <li>proposal sekurang-kurangnya memuat: judul, latar belakang, rumusan
+                                                    masalah, pertanyaan/tujuan penelitian, metode dan desain, manfaat,
+                                                    kesimpulan dan saran, dan daftar pustaka;</li>
+                                                <li>ditulis dalam bahasa Indonesia untuk dalam negeri dan Bahasa Inggris
+                                                    untuk tujuan luar negeri;</li>
+                                                <li>ditulis antara 1500 – 2000 kata.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Pendaftar paling sedikit memiliki satu surat rekomendasi dari akademisi</li>
+                                        <li>Peserta memenuhi usia minimal dan maksimal sesuai dengan jenjang pendidikan
+                                            yang diambil. Ketentuan lengkap tentang batasan usia dapat disimak
+                                            melalui buku panduan Beasiswa Pendidikan Indonesia.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card beasiswa S2 -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="./img/cimb.jpeg" class="card-img-top" alt="Beasiswa S1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beasiswa S2</h5>
+                            <p class="card-text">Dapatkan informasi lengkap mengenai beasiswa CIMB Asean Scholarship.
+                            </p>
+                            <button type="button" class="button-detail" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal7">
+                                Lihat Detail <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Beasiswa CIMB Asean Scholarship
+                                </h5>
+                                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-modal">
+                                    <p>Beasiswa CIMB ASEAN merupakan program dari Bank CIMB untuk para mahasiswa
+                                        -mahasiswi dengan kewarganegaraan ASEAN yang meliputi Indonesia, Malaysia,
+                                        Singapura, Thailand, Kamboja, Vietnam, atau Filipina.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Syarat Pendaftaran</h5>
+                                    <ol>
+                                        <li>Warga negara Indonesia, Malaysia, Singapura, Thailand, Kamboja, Vietnam,
+                                            atau Filipina 
+                                        </li>
+                                        <li>Calon mahasiswa atau mahasiswa yang sedang menempuh pendidikan untuk
+                                            menunjang karir di bagian finansial atau industri perbankkan
+                                        </li>
+                                        <li>Lulusan SMA atau sederajat yang akan menempuh pendidikan S-1, lulusan S-1
+                                            yang akan menempuh pendidikan S-2, atau mahasiswa S-1 atau S-2 yang sudah
+                                            menempuh kuliah minimal semester 3 </li>
+                                        <li> Mahasiswa yang sedang menempuh kuliah memiliki nilai IPK minimal 3.25 dan
+                                            aktif dalam kegiatan organisasi 
+                                        </li>
+                                        <li> Tidak sedang menerima program beasiswa apa pun</li>
+                                    </ol>
+                                </div>
+                                <div class="card-modal">
+                                    <p>Sebagai informasi, lulusan SMA/SMK/sederajat atau lulusan S-1 yang baru akan
+                                        mendaftar ke universitas tujuannya, tidak diwajibkan untuk diterima dahulu.
+                                        Namun, ketika kandidat ternyata diterima dalam seleksi beasiswa, kandidat harus
+                                        mengajukan unconditional offer. Pendaftar juga tidak harus menempuh jurusan yang
+                                        berkaitan dengan perbankan. Namun, usai pendidikan selesai, kandidat harus
+                                        menjadi bagian dari CIMB sehingga diharapkan jurusan yang ditempuh selama
+                                        berkuliah akan bisa membantu tugas dan tanggung jawab ketika bekerja di CIMB.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <p>Selain syarat fisik di atas, penerima beasiswa ini juga nantinya diharapkan untuk
+                                        menjadi pemimpin dalam sebuah industri perbankan. Jadi, pendaftar juga harus
+                                        memenuhi syarat khusus tentang soft skill berikut ini.
+                                    </p>
+                                    <ol>
+                                        <li>Kandidat diharapkan tidak hanya dapat beradaptasi dengan mudah terhadap
+                                            perubahan tetapi juga mendukung dan berkembang di dalam lingkungan yang
+                                            sinergis</li>
+                                        <li>Memiliki kemampuan komunikasi yang baik, dapat mengutarakan pendapat, serta
+                                            mampu mendengarkan dengan empati</li>
+                                        <li>Memiliki nilai akademik yang baik dan aktif dalam berkegiatan di organisasi
+                                            sekolah atau kampus </li>
+                                        <li>Memiliki kemampuan memimpin yang baik, bekerja sama dengan tim, serta
+                                            memiliki kemampuan interpersonal yang baik </li>
+                                        <li>Mampu berpikir kritis, kreatif, dan inovatif sehingga memiliki solusi atas
+                                            permasalahan umum yang sedang terjadi</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Beasiswa S2 -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="./img/lpdp.jpg" class="card-img-top" alt="Beasiswa S1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beasiswa S2</h5>
+                            <p class="card-text">Dapatkan informasi lengkap mengenai beasiswa LPDP.
+                            </p>
+                            <button type="button" class="button-detail" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal8">
+                                Lihat Detail <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Beasiswa LPDP
+                                </h5>
+                                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-modal">
+                                    <p>Beasiswa LPDP merupakan program beasiswa yang diselenggarakan oleh Pemerintah
+                                        Indonesia melalui Lembaga Pengelola Dana Pendidikan, Kemenkeu dalam rangka
+                                        menghasilkan sumber daya manusia Indonesia yang berkarakter pemimpin,
+                                        profesional, saintis, dan teknokrat.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Syarat Pendaftaran</h5>
+                                    <ol>
+                                        <li>Warga Negara</li>
+                                        <li>Telah menyelesaikan studi:
+                                            <ul>
+                                                <li>program diploma empat (D4) atau sarjana (S1) untuk beasiswa
+                                                    magister;</li>
+                                                <li>program magister (S2) untuk beasiswa doktor, atau</li>
+                                                <li>diploma empat (D4)/sarjana (S1) langsung doktor.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Bagi pendaftar dari diploma empat (D4)/sarjana (S1) langsung doktor wajib
+                                            memenuhi ketentuan sebagai berikut:
+                                            <ul>
+                                                <li>Memiliki LoA Unconditional dari Perguruan Tinggi tujuan, dan</li>
+                                                <li>Memenuhi seluruh kriteria persyaratan sebagai pendaftar doktor (S3)
+                                                    Beasiswa</li>
+                                            </ul>
+                                        </li>
+                                        <li> Pendaftar yang telah menyelesaikan studi magister (S2) tidak diizinkan
+                                            mendaftar pada program beasiswa magister dan pendaftar yang telah
+                                            menyelesaikan studi doktor (S3) tidak diizinkan mendaftar pada program
+                                            beasiswa doktor.
+                                        </li>
+                                        <li>Bagi pendaftar jenjang doktor pada semua program Beasiswa LPDP yang
+                                            merupakan lulusan dokter spesialis atau dokter subspesialis dapat
+                                            menggunakan transkrip nilai dokter spesialis atau dokter subspesialis
+                                            sebagai bukti pemenuhan syarat Indeks Prestasi Kumulatif (IPK) pada
+                                            masing-masing program.</li>
+                                        <li>Bagi pendaftar lulusan perguruan tinggi luar negeri pada jenjang pendidikan
+                                            sebelumnya, wajib melampirkan:
+                                            <ul>
+                                                <li>hasil penyetaraan ijazah dari Kementerian Pendidikan, Kebudayaan,
+                                                    Riset, dan Teknologi melalui
+                                                    laman https://piln.kemdikbud.go.id/ atau Kementerian Agama melalui
+                                                    laman https://diktis.kemenag.go.id/penyetaraan ijazah/</li>
+                                                <li>hasil konversi IPK dari Kementerian Pendidikan, Kebudayaan, Riset,
+                                                    dan Teknologi melalui    laman https://piln.kemdikbud.go.id/ atau
+                                                    Kementerian Agama melalui
+                                                    laman https://diktis.kemenag.go.id/penyetaraanijazah/ </li>
+                                                <li>tangkapan layar ajuan penyetaraan ijazah dan/atau konversi IPK pada
+                                                    laman Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi atau
+                                                    Kementerian Agama mengenai penyetaraan ijazah dan/atau konversi IPK
+                                                    bagi pendaftar yang penyetaraan ijazah dan/atau konversi IPK-nya
+                                                    belum terbit.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Pendaftar yang sedang menempuh studi (on going) dapat mendaftar dengan
+                                            ketentuan berikut:
+                                            <ul>
+                                                <li>Mendaftar pada program studi dan/atau perguruan tinggi tujuan yang
+                                                    berbeda dari yang sedang ditempuh;</li>
+                                                <li>Pendaftar yang lulus seleksi substansi wajib membuat dan
+                                                    menandatangani surat pengunduran diri yang ditujukan kepada
+                                                    perguruan tinggi atas program studi yang sedang ditempuh serta
+                                                    menyampaikan surat tersebut kepada LPDP paling lambat 2 (dua) pekan
+                                                    setelah diumumkan lulus seleksi substansi;</li>
+                                                <li>Pendaftar wajib untuk menyerahkan surat pemberhentian resmi dari
+                                                    program studi atau perguruan tinggi sebelum penandatanganan surat
+                                                    pernyataan Penerima Beasiswa;</li>
+                                                <li>Bagi pendaftar yang lulus seleksi substansi dan tidak memenuhi
+                                                    ketentuan tersebut di atas, maka LPDP dapat membatalkan statusnya
+                                                    sebagai Calon Penerima Beasiswa;</li>
+                                                <li>Bagi pendaftar yang menyelesaikan studi dan mendapat gelar sebelum
+                                                    pengumuman seleksi substansi, maka LPDP dapat membatalkan statusnya
+                                                    sebagai Calon Penerima Beasiswa.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Pendaftar yang sedang menempuh studi (on going) dokter spesialis/dokter
+                                            subspesialis dapat mendaftar program magister/doktor atau sebaliknya dengan
+                                            ketentuan:</li>
+                                        <li>Pendaftar yang pernah menempuh studi namun tidak menyelesaikan studi pada
+                                            program magister ataupun doktor baik di perguruan tinggi dalam negeri maupun
+                                            perguruan tinggi di luar negeri dapat mendaftar Beasiswa LPDP di jenjang
+                                            studi yang sama dan dibuktikan dengan surat pemberhentian/ sejenisnya
+                                            sebagai mahasiswa dari perguruan tinggi tersebut.</li>
+                                        <li>Melampirkan surat rekomendasi sesuai dengan persyaratan masing-masing
+                                            program yang diterbitkan paling lama 1 (satu) tahun di bulan yang sama
+                                            dengan waktu pendaftaran beasiswa. Surat rekomendasi dapat disampaikan
+                                            dengan dua cara:
+                                            <ul>
+                                                <li>Surat Rekomendasi Online Form, disampaikan dengan cara menginput
+                                                    data pemberi rekomendasi melalui aplikasi pendaftaran yang terdiri
+                                                    dari nama perekomendasi, instansi, jabatan, email aktif dan nomor
+                                                    Selanjutnya, LPDP akan mengirimkan email kepada perekomendasi untuk
+                                                    mengisikan rekomendasi yang kemudian dikirimkan (submit) kepada
+                                                    LPDP.</li>
+                                                <li>Surat Rekomendasi Offline Form (unggahan) yang ditandatangani oleh
+                                                    pemberi rekomendasi, disampaikan dengan cara mengunggah dokumen pada
+                                                    aplikasi pendaftaran serta mengisikan data bulan dan tahun surat
+                                                    tersebut diterbitkan atau ditandatangani (contoh format terlampir).
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>Bagi pendaftar berstatus PNS dan CPNS di semua program beasiswa LPDP wajib
+                                            melampirkan surat usulan atau surat rekomendasi yang ditujukan kepada LPDP
+                                            sekurang-kurangnya dari pejabat setingkat eselon II yang membidangi
+                                            pembinaan/ pengembangan SDM pada Kementerian/ Lembaga atau Pemerintah Daerah
+                                            tempat pendaftar bekerja dengan ketentuan:
+                                            <ul>
+                                                <li>Mengusulkan atau merekomendasikan pendaftar untuk mengikuti program
+                                                    Beasiswa LPDP; dan</li>
+                                                <li>mencantumkan Nama Lengkap serta Nomor Induk Pegawai (NIP) pendaftar
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>Bagi pendaftar berstatus prajurit TNI di semua program beasiswa LPDP wajib
+                                            melampirkan surat usulan atau surat rekomendasi yang ditujukan kepada LPDP
+                                            sekurang-kurangnya pejabat yang membidangi pembinaan SDM pada Mabes TNI/ TNI
+                                            AD/ TNI AL/ TNI AU untuk mengikuti program beasiswa LPDP.</li>
+                                        <li>Bagi pendaftar berstatus anggota POLRI di semua program beasiswa LPDP wajib
+                                            melampirkan surat usulan atau surat rekomendasi yang ditujukan kepada LPDP
+                                            sekurang-kurangnya pejabat yang membidangi pembinaan SDM pada Mabes POLRI
+                                            untuk mengikuti program beasiswa</li>
+                                        <li>Memilih Perguruan Tinggi Tujuan dan program studi sesuai dengan ketentuan
+                                        </li>
+                                        <li>Beasiswa hanya diperuntukkan untuk kelas reguler atau kelas yang ditetapkan
+                                            oleh LPDP, dan tidak diperuntukkan untuk kelas- kelas sebagai berikut:
+                                            <ul>
+                                                <li>Kelas Eksekutif</li>
+                                                <li>Kelas Khusus</li>
+                                                <li>Kelas Karyawan</li>
+                                                <li>Kelas Jarak Jauh</li>
+                                                <li>Kelas yang diselenggarakan bukan di perguruan tinggi induk</li>
+                                                <li>Kelas Internasional bagi pendaftar tujuan studi dalam negeri;</li>
+                                                <li>Kelas yang diselenggarakan di lebih dari 1 (satu) negara perguruan
+                                                    tinggi, atau</li>
+                                                <li>Kelas lainnya yang tidak memenuhi ketentuan LPDP.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Menyetujui surat pernyataan yang telah disediakan pada aplikasi pendaftaran
+                                            beasiswa LPDP (poin-poin terlampir).</li>
+                                        <li>Menulis profil diri termasuk riwayat pendidikan yang tidak diselesaikan
+                                            (tidak lulus) pada aplikasi pendaftaran.</li>
+                                        <li>Menulis komitmen kembali ke Indonesia, rencana pasca studi, dan rencana
+                                            kontribusi di Indonesia.</li>
+                                        <li>Menulis Proposal Penelitian bagi pendaftar program pendidikan doktor.</li>
+                                        <li>Jika pendaftar memiliki publikasi ilmiah, prestasi kejuaraan/non kejuaraan,
+                                            dan pengalaman organisasi maka pendaftar mengisi riwayat publikasi ilmiah,
+                                            prestasi kejuaraan/non kejuaraan, dan pengalaman organisasi pada aplikasi
+                                            pendaftaran.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card beasiswa S2 -->
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="./img/pmdsu.png" class="card-img-top" alt="Beasiswa S1">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Beasiswa S2</h5>
+                            <p class="card-text">Dapatkan informasi lengkap mengenai beasiswa PMDSU.
+                            </p>
+                            <button type="button" class="button-detail" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal9">
+                                Lihat Detail <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Beasiswa PMDSU
+                                </h5>
+                                <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-modal">
+                                    <p>Pendidikan Magister menuju Doktor untuk Sarjana Unggul (PMDSU), merupakan program
+                                        beasiswa bagi sarjana unggul untuk melakukan percepatan pendidikan menjadi
+                                        lulusan doktor pada usia muda.
+                                    </p>
+                                </div>
+                                <div class="card-modal">
+                                    <h5 style="margin: 10px; font-weight: bold;">Syarat Pendaftaran</h5>
+                                    <ol>
+                                        <li> sarjana unggul yang lulus tepat waktu tahun 2022 dan 2023; </li>
+                                        <li>telah memiliki gelar S1 (sarjana strata1);</li>
+                                        <li>persyaratan Indeks Prestasi Kumulatif (IPK) pelamar adalah sebagai berikut:
+                                            <ul>
+                                                <li> jika peringkat akreditasi PT asal pelamar A atau unggul, peringkat
+                                                    akreditasi prodi asal pelamar A atau unggul, maka IPK ≥ 3,25;</li>
+                                                <li> jika peringkat akreditasi PT asal pelamar B atau baik sekali,
+                                                    peringkat akreditasi prodi asal pelamar A atau unggul, maka IPK ≥
+                                                    3,5; </li>
+                                                <li>jika peringkat akreditasi PT asal pelamar A atau unggul, peringkat
+                                                    akreditasi prodi asal pelamar B atau baik sekali, maka IPK ≥ 3,5;
+                                                </li>
+                                                <li>jika peringkat akreditasi PT asal pelamar B atau baik sekali,
+                                                    peringkat akreditasi prodi asal pelamar B atau baik sekali, maka IPK
+                                                    ≥ 3,75; dan </li>
+                                                <li> jika peringkat akreditasi PT dan prodi asal pelamar selain pada
+                                                    angka 1) sampai dengan angka 4), maka IPK > 3,8. </li>
+                                            </ul>
+                                        </li>
+                                        <li> usia maksimal 24 tahun untuk lulusan non-profesi dan 27 tahun untuk lulusan
+                                            profesi per tanggal 31 Desember 2023;
+                                        </li>
+                                        <li>mendapatkan surat rekomendasi dari dosen pembimbing S1;</li>
+                                        <li>Warga Negara Indonesia;
+                                        </li>
+                                        <li> tidak sedang menerima beasiswa yang berasal dari sumber lain;
+                                        </li>
+                                        <li>sehat jasmani, rohani dan bebas narkotika, psikotropika, dan obat terlarang
+                                            (narkoba); dan </li>
+                                        <li>Bersedia mengikuti pendidikan pascasarjana selama jangka waktu empat tahun
+                                            dengan menandatangani surat pernyataan bermaterai.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Akhir Kategoei Beasiswa S2 -->
+
+    <!-- Section News -->
+    <section id="news" class="news-section">
+        <h2>BERITA</h2>
+
+        <!-- Card TIPS berada di tengah -->
+        <div class="card11 tips-card">
+            <h3>• TIPS</h3>
+            <p>Simak tips lolos beasiswa kuliah berikut ini agar mendapatkan keringanan tersebut:</p>
+            <ol>
+                <li><strong>Update Informasi Beasiswa:</strong> Selalu cek informasi terbaru terkait beasiswa dari
+                    berbagai sumber resmi.</li>
+                <li><strong>Ikuti Latihan Persyaratannya:</strong> Pelajari soal atau persyaratan beasiswa sesuai
+                    dengan ketentuan penyedia.</li>
+                <li><strong>Hubungi Para Alumni:</strong> Cari masukan dan kiat-kiat dari alumni beasiswa.</li>
+                <li><strong>Perhatikan Timeline:</strong> Pastikan semua berkas disubmit sebelum batas waktu yang
+                    ditentukan.</li>
+                <li><strong>Lengkapi Berkas dengan Cermat:</strong> Periksa kelengkapan dokumen dengan hati-hati.
+                </li>
+                <li><strong>Lengkapi CV dengan Pengalaman Terkait:</strong> Sertakan pengalaman relevan yang
+                    mendukung tujuan studi Anda.</li>
+                <li><strong>Minta Surat Rekomendasi:</strong> Pilih pemberi rekomendasi yang sesuai bidang studi
+                    Anda.</li>
+                <li><strong>Uraikan Target Besar ke Target Kecil:</strong> Pecah langkah besar menjadi langkah kecil
+                    yang terorganisir.</li>
+                <li><strong>Latihan Interview:</strong> Siapkan diri untuk menjawab pertanyaan dengan percaya diri
+                    dan jelas.</li>
+                <li><strong>Minta Doa Orang Tua:</strong> Berdoa dan mintalah restu orang tua untuk keberhasilan
+                    Anda.</li>
+            </ol>
+        </div>
+
+        <!-- Kontainer untuk gambar tips dan motivasi -->
+        <div class="card-row">
+            <!-- Card untuk Gambar TIPS -->
+            <div class="card11 image-card">
+                <a href="https://www.youtube.com/watch?v=e_kormDbdo4&pp=ygUUdGlwcyBsb2xvcyBiZWFzaXN3YSA%3D"
+                    target="_blank">
+                    <img src="https://img.youtube.com/vi/e_kormDbdo4/hqdefault.jpg" alt="Thumbnail Tips Lolos Beasiswa"
+                        class="thumbnail">
+                    <p>Temukan tips menarik lainnya dengan menonton video berikut</p>
+                </a>
+            </div>
+
+            <!-- Card untuk Gambar MOTIVASI -->
+            <div class="card11 image-card">
+                <a href="https://www.youtube.com/watch?v=LgSy0azAiM4&pp=ygUYbW90aXZhc2kgbG9sb3MgYmVhc2lzd2Eg"
+                    target="_blank">
+                    <img src="https://img.youtube.com/vi/LgSy0azAiM4/hqdefault.jpg" alt="Thumbnail Motivasi Beasiswa"
+                        class="thumbnail">
+                    <p>Temukan motivasi menarik lainnya dengan menonton video berikut</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Akhir Section News -->
+
+
+
+    <!-- Kumpulan Kode File javaScript -->
+    <script src="../script/scriptKategory.js"></script>
+
+
+    <!-- Script bootstrapp -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+    <!-- Script AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

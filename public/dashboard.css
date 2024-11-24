@@ -1,0 +1,403 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-content {
+    background: white;
+}
+
+
+/* Style Untuk Navbar */
+#navbar {
+    background-color: #201658;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+#logo img {
+    border-radius: 100px;
+    width: 100px;
+    margin-left: 40px;
+
+}
+
+.text {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.navbar-nav {
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.nav-item .nav-link {
+    color: white;
+    font-size: 25px;
+    margin-left: 10px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.nav-item .nav-link:hover {
+    background: #3333;
+    border-radius: 5px;
+    color: #004d99;
+}
+
+
+.button {
+    background: #004d99;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 20px;
+    margin-right: 10px;
+}
+
+.button a {
+    color: white;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #3333;
+    color: #004d99;
+    border: 2px solid #FFF;
+}
+
+.collapse .navbar-nav .nav-item .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #004d99;
+    border-radius: 10px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px #201658;
+    z-index: 1;
+}
+
+.collapse .navbar-nav .nav-item .dropdown li {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    padding: 5px;
+}
+
+.collapse .navbar-nav .nav-item .dropdown li a:hover {
+    color: white;
+    transition: 0.8s;
+}
+
+.collapse .navbar-nav .nav-item:hover .dropdown {
+    display: block;
+    padding: 10px;
+}
+
+.collapse .navbar-nav .nav-item .dropdown li a {
+    color: #201658;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* Akhir Style Navbar */
+
+
+/* Style Untuk Home */
+.homepage {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: url("./img/2.jpg");
+    background-position: center 65%;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.homepage::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.homepage .content {
+    display: flex;
+    height: 85%;
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.homepage .content h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.homepage .content .text {
+    margin-bottom: 50px;
+    color: #f2f2f2;
+    font-size: 20 px;
+    text-align: center;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Akhir style home */
+
+
+/* Style Untuk About */
+.drop-shadow {
+    box-shadow: 0px 4px 28px rgba(0, 0, 0, 0.04);
+}
+
+section.about {
+    padding: 10rem 0 10rem;
+}
+
+.text-about-bold {
+    font-size: 50px;
+    line-height: 60px;
+}
+
+.text-reguler {
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.about-button .btn {
+    color: white;
+    font-size: 25px;
+    margin-left: 10px;
+    font-weight: bold;
+    transition: 0.5s;
+    background-color: #201658;
+    border-radius: 30px;
+}
+
+.about-button .btn:hover {
+    background: #AEE2FF;
+    border-radius: 5px;
+    color: #201658;
+}
+
+/* Akhir Style about */
+
+
+/* Style untuk Kategori */
+.kategori {
+    padding: 10rem 0 10rem;
+    background-color: #FFF;
+}
+
+.kategori .heading {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #201658;
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #201658;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.button-detail {
+    background-color: #201658;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
+
+.button-detail:hover {
+    background-color: #004d99;
+    border-color: #004d99;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.col-md-4 {
+    flex: 1 1 30%;
+    margin: 0 15px;
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card img {
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.modal-content {
+    transition: transform 0.5s ease;
+    animation: slideIn 0.5s ease-in-out;
+    border-radius: 20px !important;
+}
+
+.modal-content .modal-header h5 {
+    color: #201658;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.modal-content .modal-body .card-modal {
+    border: none;
+    background: #e7e9eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.modal-content .modal-body .card-modal p {
+    padding: 10px;
+    text-align: justify;
+}
+
+/* Akhir style kategori */
+
+/* Style untuk news */
+.news-section {
+    padding: 10rem 0 10rem;
+    background-color: #201658;
+    font-family: Arial, sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+.news-section h2 {
+    font-size: 36px;
+    margin-bottom: 2rem;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.card11 {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.tips-card {
+    max-width: 800px;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.tips-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.card-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.image-card {
+    flex: 1;
+    max-width: 500px;
+}
+
+.card11 p {
+    font-size: 20px;
+    color: #333;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .card-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .image-card {
+        max-width: 100%;
+    }
+}
+
+
+/* Akhit Style untk News */
