@@ -1,7 +1,7 @@
 {
-  "main":"server.js",
+  "main":"index.js",
   "script":{
-    "start": "node ."
+    "start": "node index.js"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
