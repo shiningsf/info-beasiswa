@@ -14,6 +14,17 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
+const corsOptions = {
+    origin: "https://informasi-beasiswa.vercel.app/",
+    optionSuccessStatus: 200
+}
+
+app.get("/user/:id",
+    cors(corsOptions), function(req, res, next){
+        res.json({msg: "enable for only https://informasi-beasiswa.vercel.app/"})
+    }
+)
+
 // Sajikan file statis dari folder "public"
 app.use(express.static(path.join(__dirname, "public")));
 
