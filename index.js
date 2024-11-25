@@ -24,19 +24,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Database Connection Pool
-const pool = mysql.createPool({
-    host: "sql12.freemysqlhosting.net",
-    user: "sql12747052",
-    password: "K89hYUnDVA",
-    database: "sql12747052",
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
-    enableKeepAlive: true,
-    keepAliveInitialDelay: 0
-});
-
 // Helper function untuk database queries
 async function executeQuery(query, params) {
     try {
