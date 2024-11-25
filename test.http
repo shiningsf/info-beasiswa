@@ -1,4 +1,4 @@
-POST https://informasi-beasiswa.vercel.app/register
+POST https://info-beasiswa.vercel.app/register
 Content-Type: application/json
 Accept: application/json
 
