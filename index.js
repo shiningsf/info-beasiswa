@@ -1,11 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mysql = require("mysql2/promise"); // Ganti ke mysql2
+const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { executeQuery, pool } = require('./dbMonitor');
 const cors = require("cors");
 const path = require("path");
+
 const app = express();
 const PORT = 5000;
 
@@ -14,151 +14,81 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
-// Perbaikan CORS
-const corsOptions = {
-    origin: ["https://informasi-beasiswa.vercel.app", "http://localhost:3000"],
-    methods: ['GET', 'POST'],
-    credentials: true,
-    optionsSuccessStatus: 200
-};
+// const corsOptions = {
+//     origin: "https://informasi-beasiswa.vercel.app/",
+//     optionSuccessStatus: 200
+// }
 
-app.use(cors(corsOptions));
+// app.get("/user/:id",
+//     cors(corsOptions), function(req, res, next){
+//         res.json({msg: "enable for only https://informasi-beasiswa.vercel.app/"})
+//     }
+// )
 
-// Helper function untuk database queries
-async function executeQuery(query, params) {
-    try {
-        const [results] = await pool.execute(query, params);
-        return results;
-    } catch (error) {
-        console.error('Database error:', error);
-        throw error;
-    }
-}
+// Sajikan file statis dari folder "public"
+app.use(express.static(path.join(__dirname, "public")));
 
-// Register Endpoint dengan error handling yang lebih baik
-app.post("/register", async (req, res) => {
-    try {
-        const { nama, username, password } = req.body;
-
-        // Validasi input
-        if (!nama || !username || !password) {
-            return res.status(400).json({ error: "Semua field harus diisi" });
-        }
-
-        // Cek apakah username sudah ada
-        const existingUser = await executeQuery(
-            "SELECT id FROM tabel_beasiswa WHERE username = ?",
-            [username]
-        );
-
-        if (existingUser.length > 0) {
-            return res.status(409).json({ error: "Username sudah digunakan" });
-        }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-        await executeQuery(
-            "INSERT INTO tabel_beasiswa (nama, username, password) VALUES (?, ?, ?)",
-            [nama, username, hashedPassword]
-        );
-
-        res.status(201).json({ message: "Registrasi berhasil" });
-    } catch (error) {
-        console.error('Register error:', error);
-        res.status(500).json({ 
-            error: "Terjadi kesalahan saat registrasi",
-            details: error.message 
-        });
-    }
+// Database Connection
+const db = mysql.createConnection({
+    host: "sql12.freemysqlhosting.net",
+    user: "sql12747052",
+    password: "K89hYUnDVA",
+    database: "sql12747052",
 });
 
-// Login Endpoint dengan error handling yang lebih baik
-app.post("/login", async (req, res) => {
+db.connect((err) => {
+    if (err) {
+        console.error("Database connection failed:", err);
+        return;
+    }
+    console.log("Connected to MySQL Database.");
+});
+
+// Default route untuk menampilkan login.html
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "login.html"));
+});
+
+// Register Endpoint
+app.post("/register", async (req, res) => {
+    const { nama, username, password } = req.body;
     try {
-        const { username, password } = req.body;
-
-        // Validasi input
-        if (!username || !password) {
-            return res.status(400).json({ error: "Username dan password harus diisi" });
-        }
-
-        const users = await executeQuery(
-            "SELECT * FROM tabel_beasiswa WHERE username = ?",
-            [username]
-        );
-
-        if (users.length === 0) {
-            return res.status(404).json({ error: "User tidak ditemukan" });
-        }
-
-        const user = users[0];
-        const match = await bcrypt.compare(password, user.password);
-
-        if (!match) {
-            return res.status(401).json({ error: "Password salah" });
-        }
-
-        const token = jwt.sign(
-            { id: user.id, username: user.username },
-            "secret_key",
-            { expiresIn: "1h" }
-        );
-
-        res.status(200).json({ 
-            message: "Login berhasil",
-            token,
-            user: {
-                id: user.id,
-                nama: user.nama,
-                username: user.username
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const query = "INSERT INTO tabel_beasiswa (nama, username, password) VALUES (?, ?, ?)";
+        db.query(query, [nama, username, hashedPassword], (err, result) => {
+            if (err) {
+                res.status(500).json({ error: "Failed to register user." });
+            } else {
+                res.status(201).json({ message: "User registered successfully." });
             }
         });
     } catch (error) {
-        console.error('Login error:', error);
-        res.status(500).json({ 
-            error: "Terjadi kesalahan saat login",
-            details: error.message 
-        });
+        res.status(500).json({ error: "Error hashing password." });
     }
 });
 
-// Health check endpoint
-app.get("/health", async (req, res) => {
-    try {
-        await executeQuery("SELECT 1");
-        res.json({ status: "ok", message: "Database connection is healthy" });
-    } catch (error) {
-        res.status(500).json({ 
-            status: "error",
-            message: "Database connection issue",
-            error: error.message 
-        });
-    }
-});
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ 
-        error: "Terjadi kesalahan pada server",
-        details: err.message 
+// Login Endpoint
+app.post("/login", (req, res) => {
+    const { username, password } = req.body;
+    const query = "SELECT * FROM tabel_beasiswa WHERE username = ?";
+    db.query(query, [username], async (err, results) => {
+        if (err || results.length === 0) {
+            return res.status(404).json({ error: "User not found." });
+        }
+        const user = results[0];
+        const match = await bcrypt.compare(password, user.password);
+        if (!match) {
+            return res.status(401).json({ error: "Invalid credentials." });
+        }
+        const token = jwt.sign({ id: user.id }, "secret_key", { expiresIn: "1h" });
+        res.status(200).json({ message: "Login successful", token });
     });
 });
 
-const startServer = async () => {
-    try {
-        // Test database connection
-        await executeQuery("SELECT 1");
-        console.log("Database connection successful");
 
-        app.listen(PORT, () => {
-            console.log(`Server running on http://localhost:${PORT}`);
-        });
-    } catch (error) {
-        console.error("Failed to start server:", error);
-        process.exit(1);
-    }
-};
+// Jalankan server
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
 
-startServer();
-
-export default app;
+export default app
