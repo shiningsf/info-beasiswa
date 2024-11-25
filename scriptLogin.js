@@ -43,7 +43,7 @@ document.getElementById("login-button").addEventListener("click", () => {
         .then((data) => {
             if (data.token) {
                 // Login berhasil: arahkan ke dashboard
-                window.location.href = "dashboard.html";
+                window.location.href = "./public/dashboard.html";
             } else {
                 // Tampilkan pesan error jika login gagal
                 alert(data.error);
