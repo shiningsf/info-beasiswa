@@ -23,13 +23,10 @@ document.getElementById("register-button").addEventListener("click", () => {
     })
         .then((res) => res.json())
         .then((data) => {
-            if (data.message) {
-                alert(data.message); // Pesan registrasi sukses
-            } else {
-                console.error(data.error); // Error saat registrasi
-            }
+            alert(data.message || data.error)
+        }).catch((error) => {
+            console.error("Error:", error);
         })
-        .catch((err) => console.error(err));
 });
 
 // Script Untuk Login

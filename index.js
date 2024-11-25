@@ -1,98 +1,116 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mysql = require("mysql");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const cors = require("cors");
-const path = require("path");
+import bcrypt from 'bcrypt'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import express from 'express'
+import jwt from 'jsonwebtoken'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const app = express();
-const PORT = 5000;
+import { pool } from './db.js'
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(bodyParser.json());
+const app = express()
+const PORT = 5000
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+app.use(cors())
+app.use(express.json())
+app.use(bodyParser.json())
 
 const corsOptions = {
-    origin: "https://informasi-beasiswa.vercel.app/",
+    origin: 'https://informasi-beasiswa.vercel.app/',
     optionSuccessStatus: 200
 }
 
-app.get("/user/:id",
+app.get('/user/:id',
     cors(corsOptions), function(req, res, next){
-        res.json({msg: "enable for only https://informasi-beasiswa.vercel.app/"})
+        res.json({msg: 'enable for only https://informasi-beasiswa.vercel.app/'})
     }
 )
 
-// Sajikan file statis dari folder "public"
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')))
 
-// Database Connection
-const db = mysql.createPool({
-    host: "qmmdn.h.filess.io",
-    user: "beasiswa_policeman",
-    password: "43529ebe035e73d7773df3fd059827640aa33579",
-    database: "beasiswa_policeman",
-    port: "3307",
-    connectionLimit: 5,
-});
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'))
+})
 
-// db.connect((err) => {
-//     if (err) {
-//         console.error("Database connection failed:", err);
-//         return;
-//     }
-//     console.log("Connected to MySQLconnection Database.");
-// });
+// register
+app.post('/register', async (req, res) => {
+    const { nama, username, password } = req.body
 
-
-// Default route untuk menampilkan login.html
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "login.html"));
-});
-
-// Register Endpoint
-app.post("/register", async (req, res) => {
-    const { nama, username, password } = req.body;
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const query = "INSERT INTO tabel_beasiswa (nama, username, password) VALUES (?, ?, ?)";
-        db.query(query, [nama, username, hashedPassword], (err, result) => {
-            if (err) {
-                res.status(500).json({ error: "Failed to register user." });
-            } else {
-                res.status(201).json({ message: "User registered successfully." });
-            }
-        });
+        // Check if username already exists
+        const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username])
+
+        if (rows.length > 0) {
+            return res.status(401).json({ error: 'Username already exists' })
+        }
+
+        // Hash the password
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
+
+        // Insert new user
+        const [result] = await pool.query(
+            'INSERT INTO tabel_beasiswa (nama, username, password) VALUES (?, ?, ?)',
+            [nama, username, hashedPassword]
+        )
+
+        res.status(201).json({ message: 'User registered successfully' })
     } catch (error) {
-        res.status(500).json({ error: "Error hashing password." });
+        console.error('Error registering user:', error)
+        res.status(500).json({ error: 'Internal Server Error' })
     }
-});
+})
 
-// Login Endpoint
-app.post("/login", (req, res) => {
-    const { username, password } = req.body;
-    const query = "SELECT * FROM tabel_beasiswa WHERE username = ?";
-    db.query(query, [username], async (err, results) => {
-        if (err || results.length === 0) {
-            return res.status(404).json({ error: "User not found." });
+
+// login
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body
+
+    try {
+        // Check if user exists
+        const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username])
+
+        if (rows.length === 0) {
+            return res.status(401).json({ error: 'Invalid username or password' })
         }
-        const user = results[0];
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) {
-            return res.status(401).json({ error: "Invalid credentials." });
+
+        const user = rows[0]
+
+        // Compare passwords
+        const validPassword = await bcrypt.compare(password, user.password)
+
+        if (!validPassword) {
+            return res.status(401).json({ error: 'Invalid username or password' })
         }
+
         const token = jwt.sign({ id: user.id }, "secret_key", { expiresIn: "1h" });
-        
-        res.status(200).json({ message: "Login successful", token });
-    });
-});
 
+        res.json({ token: token })
+    } catch (error) {
+        console.error('Error logging in:', error)
+        res.status(500).json({ error: 'Internal Server Error' })
+    }
+})
 
-// Jalankan server
+// test
+// app.get('/test', (req, res) => {
+//     const username = 'hello'
+
+//     // get all data from tabel_beasiswa
+//     pool.query('SELECT * FROM tabel_beasiswa WHERE username', [username], (error, results) => {
+//         if (error) {
+//             console.error('Error executing query:', error)
+//             res.status(500).json({ error: 'Internal Server Error' })
+//             return
+//         }
+
+//         res.json(results)
+//     })
+// })
+
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
-
-module.export = app
+    console.log(`Server running on http://localhost:${PORT}`)
+})
