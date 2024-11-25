@@ -1,0 +1,9 @@
+POST https://informasi-beasiswa.vercel.app/register
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nama": "helo",
+    "username": "helosas@gmail.com",
+    "password": "123"
+}
