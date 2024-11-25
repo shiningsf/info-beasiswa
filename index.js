@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(bodyParser.json())
 
 const corsOptions = {
-    origin: 'https://informasi-beasiswa.vercel.app/',
+    origin: 'https://info-beasiswa.vercel.app/',
     optionSuccessStatus: 200
 }
 
