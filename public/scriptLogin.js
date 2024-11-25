@@ -16,7 +16,7 @@ document.getElementById("register-button").addEventListener("click", () => {
     const username = document.getElementById("register-username").value;
     const password = document.getElementById("register-password").value;
 
-    fetch("https:/info-beasiswa.vercel.app/register", {
+    fetch("https://info-beasiswa.vercel.app/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nama, username, password }),
@@ -34,7 +34,7 @@ document.getElementById("login-button").addEventListener("click", () => {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
 
-    fetch("https:/info-beasiswa.vercel.app/login", {
+    fetch("https://info-beasiswa.vercel.app/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
