@@ -12,44 +12,25 @@ login.addEventListener("click", () => {
 
 // Script Untuk Register
 document.getElementById("register-button").addEventListener("click", () => {
-    const nama = document.getElementById("register-nama").value.trim();
-    const username = document.getElementById("register-username").value.trim();
-    const password = document.getElementById("register-password").value.trim();
+    const nama = document.getElementById("register-nama").value;
+    const username = document.getElementById("register-username").value;
+    const password = document.getElementById("register-password").value;
 
-    // Validasi data
-    if (!nama || !username || !password) {
-        alert("Semua field harus diisi!");
-        return;
-    }
-
-    if (password.length < 6) {
-        alert("Password harus memiliki minimal 6 karakter.");
-        return;
-    }
-
-    // Lanjutkan jika validasi lolos
     fetch("https://informasi-beasiswa.vercel.app/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nama, username, password }),
     })
-        .then((res) => {
-            console.log("Status:", res.status); // Debugging
-            return res.json();
-        })
+        .then((res) => res.json())
         .then((data) => {
             if (data.message) {
-                alert(data.message); // Sukses
+                alert(data.message); // Pesan registrasi sukses
             } else {
-                alert("Gagal registrasi: " + (data.error || "Error tidak diketahui"));
+                console.error(data.error); // Error saat registrasi
             }
         })
-        .catch((err) => {
-            console.error("Error:", err);
-            alert("Terjadi masalah pada server. Coba lagi nanti.");
-        });
+        .catch((err) => console.error(err));
 });
-
 
 // Script Untuk Login
 document.getElementById("login-button").addEventListener("click", () => {
