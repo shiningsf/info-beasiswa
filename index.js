@@ -29,21 +29,23 @@ app.get("/user/:id",
 app.use(express.static(path.join(__dirname, "public")));
 
 // Database Connection
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: "qmmdn.h.filess.io",
     user: "beasiswa_policeman",
     password: "43529ebe035e73d7773df3fd059827640aa33579",
     database: "beasiswa_policeman",
     port: "3307",
+    connectionLimit: 5,
 });
 
-db.connect((err) => {
-    if (err) {
-        console.error("Database connection failed:", err);
-        return;
-    }
-    console.log("Connected to MySQL Database.");
-});
+// db.connect((err) => {
+//     if (err) {
+//         console.error("Database connection failed:", err);
+//         return;
+//     }
+//     console.log("Connected to MySQLconnection Database.");
+// });
+
 
 // Default route untuk menampilkan login.html
 app.get("/", (req, res) => {
@@ -82,6 +84,9 @@ app.post("/login", (req, res) => {
             return res.status(401).json({ error: "Invalid credentials." });
         }
         const token = jwt.sign({ id: user.id }, "secret_key", { expiresIn: "1h" });
+
+
+        
         res.status(200).json({ message: "Login successful", token });
     });
 });
@@ -92,4 +97,4 @@ app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
 
-export default app
+module.export = app
