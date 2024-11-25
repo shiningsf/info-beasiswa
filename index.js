@@ -25,7 +25,7 @@ const corsOptions = {
 
 app.get('/user/:id',
     cors(corsOptions), function(req, res, next){
-        res.json({msg: 'enable for only https://informasi-beasiswa.vercel.app/'})
+        res.json({msg: 'enable for only https://info-beasiswa.vercel.app/'})
     }
 )
 
