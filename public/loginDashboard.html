@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Beasiswa</title>
+    <link rel="stylesheet" href="loginDashboard.css">
+    <link rel="icon" href="./img/logo.jpeg">
+
+    <!-- Link Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Link Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" id="logo"><img src="./img/logo.jpeg" alt="logo"></a>
+            <div class="text">Informasi</div>
+            <div class="text" style="color: crimson !important;">Beasiswa</div>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Kategori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tips</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <div class="background"></div>
+    <div class="container">
+        <div class="content">
+            <h2 class="judull"><i class="bi bi-browser-firefox"></i>Welcome !</h2>
+            <div class="text-judul">
+                <h2>Beasiswa Cemerlang, <br><span>Solusi Tepat Untuk Masa Depan Gemilang</span></h2>
+                <p>Selamat datang di platform informasi beasiswa
+                    terpercaya! Kami hadir untuk membantu Anda menemukan berbagai peluang beasiswa, khususnya di
+                    dalam negeri. Dengan adanya website ini, kami berharap dapat menjadi partner Anda dalam
+                    menemukan beasiswa yang sesuai dan meraih cita-cita akademik serta profesional yang lebih
+                    tinggi.</p>
+            </div>
+        </div>
+
+        <div class="logreg-box">
+            <!-- Form login -->
+            <div class="form-box login">
+                <form action="#">
+                    <h2>Login</h2>
+
+                    <div class="input-box">
+                        <span class="icon"><i class="bi bi-person-fill"></i></span>
+                        <input id="login-username" type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="bi bi-lock-fill"></i></span>
+                        <input id="login-password" type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <button type="submit" id="login-button" class="buttonn">Login</button>
+
+                    <div class="login-register">
+                        <p>
+                            Don't have an account? <a href="#" class="register-link">Register Now</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <!-- Akhir form login -->
+
+            <!-- Form Register -->
+            <div class="form-box register">
+                <form action="#">
+                    <h2>Register</h2>
+
+                    <div class="input-box">
+                        <span class="icon"><i class="bi bi-person-fill-check"></i></span>
+                        <input id="register-nama" type="text" required>
+                        <label>Enter your name</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="bi bi-person-fill"></i></span>
+                        <input id="register-username" type="text" required>
+                        <label>Create Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class="bi bi-lock-fill"></i></span>
+                        <input id="register-password" type="password" required>
+                        <label>Create password</label>
+                    </div>
+                    <button type="submit" id="register-button" class="buttonn">Register</button>
+
+                    <div class="login-register">
+                        <p>
+                            Alredy have an account? <a href="#" class="login-link">Login Now</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <!-- Akhit Form Register -->
+        </div>
+    </div>
+
+    <script src="loginDashboard.js"></script>
+
+</body>
+
+</html>

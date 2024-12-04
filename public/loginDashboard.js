@@ -1,22 +1,31 @@
-const container = document.querySelector(".container"),
-    register = document.querySelector(".register-link"),
-    login = document.querySelector(".login-link");
+// Kode Memunculkan Form Login dan Form Register
+const logregBox = document.querySelector('.logreg-box');
+const loginLink = document.querySelector('.login-link');
+const registerLink = document.querySelector('.register-link');
 
-// Memunculkan form login dan registration
-register.addEventListener("click", () => {
-    container.classList.add("activate");
-});
-login.addEventListener("click", () => {
-    container.classList.remove("activate");
+// Memunculkan Form Register
+registerLink.addEventListener('click', () => {
+    logregBox.classList.add('active');
 });
 
-// Script Untuk Register
+// Memunculkan Form Login
+loginLink.addEventListener('click', () => {
+    logregBox.classList.remove('active');
+});
+
+
+// Kode BackEnd JavaScript Untuk Register
 document.getElementById("register-button").addEventListener("click", () => {
     const nama = document.getElementById("register-nama").value;
     const username = document.getElementById("register-username").value;
     const password = document.getElementById("register-password").value;
 
-    fetch("https://informasi-beasiswa.vercel.app/register", {
+    if (!nama || !username || !password){
+        alert("Kolom tidak boleh kosong!");
+        return;
+    }
+
+    fetch("http://localhost:5000/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nama, username, password }),
@@ -29,12 +38,18 @@ document.getElementById("register-button").addEventListener("click", () => {
         })
 });
 
-// Script Untuk Login
+
+// Kode BackEnd JavaScript Untuk Login
 document.getElementById("login-button").addEventListener("click", () => {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
 
-    fetch("https://informasi-beasiswa.vercel.app/login", {
+    if (!username || !password){
+        alert("Kolom tidak boleh kosong!");
+        return;
+    }
+
+    fetch("http://localhost:5000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
