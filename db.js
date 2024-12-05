@@ -6,10 +6,11 @@ const pool = mysql.createPool({
     // password: '123',
     // database: 'ang',
 
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'beasiswa',
+    host: 'qmmdn.h.filess.io',
+    user: 'beasiswa_policeman',
+    password: '43529ebe035e73d7773df3fd059827640aa33579',
+    database: 'beasiswa_policeman',
+    port: 3307,
 })
 
 export { pool };
