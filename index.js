@@ -39,9 +39,9 @@ app.get('/', (req, res) => {
 app.post('/register', async (req, res) => {
     const { nama, username, password } = req.body
 
-    if (!nama || !username || !password) {
-        return res.status(400).json({ error: "Kolom tidak boleh kosong!" });
-    }
+    // if (!nama || !username || !password) {
+    //     return res.status(400).json({ error: "Kolom tidak boleh kosong!" });
+    // }
 
     try {
         // Check if username already exists
@@ -73,9 +73,9 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
     const { username, password } = req.body
 
-    if (!username || !password) {
-        return res.status(400).json({ error: "Kolom tidak boleh kosong!" });
-    }
+    // if (!username || !password) {
+    //     return res.status(400).json({ error: "Kolom tidak boleh kosong!" });
+    // }
 
     try {
         // Check if user exists

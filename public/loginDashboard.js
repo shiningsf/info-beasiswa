@@ -20,10 +20,10 @@ document.getElementById("register-button").addEventListener("click", () => {
     const username = document.getElementById("register-username").value;
     const password = document.getElementById("register-password").value;
 
-    if (!nama || !username || !password){
-        alert("Kolom tidak boleh kosong!");
-        return;
-    }
+    // if (!nama || !username || !password){
+    //     alert("Kolom tidak boleh kosong!");
+    //     return;
+    // }
 
     fetch("https://informasi-beasiswa.vercel.app/register", {
         method: "POST",
@@ -44,10 +44,10 @@ document.getElementById("login-button").addEventListener("click", () => {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
 
-    if (!username || !password){
-        alert("Kolom tidak boleh kosong!");
-        return;
-    }
+    // if (!username || !password){
+    //     alert("Kolom tidak boleh kosong!");
+    //     return;
+    // }
 
     fetch("https://informasi-beasiswa.vercel.app/login", {
         method: "POST",
