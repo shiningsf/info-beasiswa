@@ -58,7 +58,6 @@ document.getElementById("login-button").addEventListener("click", () => {
         .then((res) => res.json())
         .then((data) => {
             if (data.token) {
-                alert("Login berhasil!");
                 window.location.href = "dashboard.html";
             } else {
                 alert(data.error);

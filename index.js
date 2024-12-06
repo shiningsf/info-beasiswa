@@ -35,6 +35,7 @@ app.post('/register', async (req, res) => {
     }
 
     try {
+        // Pastikan sudah ada index pada kolom username untuk pencarian yang lebih cepat
         const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username]);
         if (rows.length > 0) {
             return res.status(409).json({ error: 'Username already exists' });
