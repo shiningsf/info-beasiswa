@@ -25,7 +25,7 @@ document.getElementById("register-button").addEventListener("click", () => {
     //     return;
     // }
 
-    fetch("http://localhost:5000/register", {
+    fetch("https://informasi-beasiswa.vercel.app/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nama, username, password }),
@@ -49,7 +49,7 @@ document.getElementById("login-button").addEventListener("click", () => {
     //     return;
     // }
 
-    fetch("http://localhost:5000/login", {
+    fetch("https://informasi-beasiswa.vercel.app/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
