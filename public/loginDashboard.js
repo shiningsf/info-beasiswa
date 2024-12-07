@@ -20,7 +20,7 @@ const setLoadingState = (button, isLoading) => {
         button.innerHTML = "Loading...";
     } else {
         button.disabled = false;
-        button.innerHTML = "Submit";
+        button.innerHTML = "Login";
     }
 };
 
@@ -36,8 +36,6 @@ document.getElementById("register-button").addEventListener("click", async (e) =
         alert("Kolom tidak boleh kosong!");
         return;
     }
-
-    // Optional: You can add additional validation here (e.g., password length, username format)
 
     try {
         const registerButton = document.getElementById("register-button");
@@ -59,6 +57,8 @@ document.getElementById("register-button").addEventListener("click", async (e) =
             alert("Registrasi berhasil!");
             document.querySelector('.login-link').click();
         } else {
+            // Log more information about the error
+            console.error("Registration error:", data);
             alert(data.error || "Terjadi kesalahan saat registrasi");
         }
     } catch (error) {
@@ -96,11 +96,13 @@ document.getElementById("login-button").addEventListener("click", async (e) => {
         });
 
         const data = await response.json();
-        
+
         if (response.ok && data.token) {
             localStorage.setItem('token', data.token);
             window.location.href = "dashboard.html";
         } else {
+            // Log more information about the error
+            console.error("Login error:", data);
             alert(data.error || "Username atau password salah");
         }
     } catch (error) {
