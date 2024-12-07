@@ -13,10 +13,6 @@ loginLink.addEventListener('click', () => {
     logregBox.classList.remove('active');
 });
 
-// Base URL configuration
-const baseURL = process.env.NODE_ENV === 'production'
-    ? 'https://informasi-beasiswa.vercel.app' // Hapus trailing slash
-    : 'http://localhost:5000';
 
 // Register functionality
 document.getElementById("register-button").addEventListener("click", async (e) => {
@@ -32,7 +28,7 @@ document.getElementById("register-button").addEventListener("click", async (e) =
     }
 
     try {
-        const response = await fetch(`${baseURL}/register`, {
+        const response = await fetch('https://informasi-beasiswa.vercel.app/register', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -69,7 +65,7 @@ document.getElementById("login-button").addEventListener("click", async (e) => {
     }
 
     try {
-        const response = await fetch(`${baseURL}/login`, {
+        const response = await fetch('https://informasi-beasiswa.vercel.app/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

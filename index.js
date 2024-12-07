@@ -14,20 +14,8 @@ const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors({
-    origin: ['https://informasi-beasiswa.vercel.app', 'http://localhost:5000'],
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    origin: 'https://informasi-beasiswa.vercel.app' // Hanya izinkan domain ini untuk mengakses server
 }));
-
-// Security headers
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('X-Content-Type-Options', 'nosniff');
-    res.header('X-Frame-Options', 'DENY');
-    res.header('X-XSS-Protection', '1; mode=block');
-    next();
-});
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -35,7 +23,7 @@ app.use(bodyParser.json());
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).json({ 
+    res.status(500).json({
         error: 'Terjadi kesalahan pada server',
         message: process.env.NODE_ENV === 'development' ? err.message : undefined
     });
@@ -66,7 +54,7 @@ app.post('/register', async (req, res) => {
     try {
         // Check if username already exists
         const [existingUsers] = await pool.query(
-            'SELECT * FROM tabel_beasiswa WHERE username = ?', 
+            'SELECT * FROM tabel_beasiswa WHERE username = ?',
             [username]
         );
 
@@ -84,13 +72,13 @@ app.post('/register', async (req, res) => {
             [nama, username, hashedPassword]
         );
 
-        res.status(201).json({ 
+        res.status(201).json({
             message: 'Registrasi berhasil',
             success: true
         });
     } catch (error) {
         console.error('Error registering user:', error);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Terjadi kesalahan pada server',
             details: process.env.NODE_ENV === 'development' ? error.message : undefined
         });
@@ -109,7 +97,7 @@ app.post('/login', async (req, res) => {
     try {
         // Check if user exists
         const [users] = await pool.query(
-            'SELECT * FROM tabel_beasiswa WHERE username = ?', 
+            'SELECT * FROM tabel_beasiswa WHERE username = ?',
             [username]
         );
 
@@ -127,9 +115,9 @@ app.post('/login', async (req, res) => {
 
         // Create token
         const token = jwt.sign(
-            { 
-                id: user.id, 
-                username: user.username 
+            {
+                id: user.id,
+                username: user.username
             },
             process.env.JWT_SECRET || 'azhar123',
             { expiresIn: "24h" }
@@ -154,7 +142,7 @@ app.post('/login', async (req, res) => {
         });
     } catch (error) {
         console.error('Error logging in:', error);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Terjadi kesalahan pada server',
             details: process.env.NODE_ENV === 'development' ? error.message : undefined
         });
