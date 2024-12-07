@@ -1,15 +1,15 @@
 import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+
+// Load .env variables
+dotenv.config();
 
 const pool = mysql.createPool({
-    // host: 'localhost',
-    // user: 'root',
-    // password: '123',
-    // database: 'ang',
-
-    host: 'qmmdn.h.filess.io',
-    user: 'beasiswa_policeman',
-    password: '43529ebe035e73d7773df3fd059827640aa33579',
-    database: 'beasiswa_policeman',
-})
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT || 3306, // Default to 3306 if not specified
+});
 
 export { pool };
