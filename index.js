@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 // Middleware
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
-        ? ['https://informasi-beasiswa.vercel.app'] // Ganti dengan URL frontend Anda
+        ? ['https://informasi-beasiswa.vercel.app/'] // Ganti dengan URL frontend Anda
         : ['http://localhost:3000', 'http://localhost:5000'],
     credentials: true
 }));

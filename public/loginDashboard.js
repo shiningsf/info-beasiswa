@@ -15,7 +15,7 @@ loginLink.addEventListener('click', () => {
 
 // Tambahkan baseURL untuk production dan development
 const baseURL = process.env.NODE_ENV === 'production'
-    ? 'https://informasi-beasiswa.vercel.app' // Ganti dengan URL Vercel Anda
+    ? 'https://informasi-beasiswa.vercel.app/' // Ganti dengan URL Vercel Anda
     : 'http://localhost:5000';
 
 // Register functionality
