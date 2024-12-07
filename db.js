@@ -4,9 +4,6 @@ import dotenv from 'dotenv';
 // Load .env variables
 dotenv.config();
 
-// Contoh file db.js
-console.log('DB_HOST:', process.env.DB_HOST);  // Menampilkan host database
-console.log('DB_USER:', process.env.DB_USER);  // Menampilkan user database
 
 const pool = mysql.createPool({
     host: process.env.DB_HOST,

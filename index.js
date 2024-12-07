@@ -13,11 +13,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Middleware
+// app.use(cors({
+//     origin: process.env.NODE_ENV === 'production' 
+//         ? ['https://informasi-beasiswa.vercel.app/'] // Ganti dengan URL frontend Anda
+//         : ['http://localhost:3000', 'http://localhost:5000'],
+//     credentials: true
+// }));
+
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' 
-        ? ['https://informasi-beasiswa.vercel.app/'] // Ganti dengan URL frontend Anda
-        : ['http://localhost:3000', 'http://localhost:5000'],
-    credentials: true
+    origin: 'https://informasi-beasiswa.vercel.app' // Hanya izinkan domain ini untuk mengakses server
 }));
 
 app.use(express.json());
@@ -50,7 +54,7 @@ app.post('/register', async (req, res) => {
     try {
         // Check if username already exists
         const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username]);
-        
+
         if (rows.length > 0) {
             return res.status(400).json({ error: 'Username sudah digunakan' });
         }
@@ -84,7 +88,7 @@ app.post('/login', async (req, res) => {
     try {
         // Check if user exists
         const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username]);
-        
+
         if (rows.length === 0) {
             return res.status(401).json({ error: 'Username atau password salah' });
         }
@@ -93,19 +97,19 @@ app.post('/login', async (req, res) => {
 
         // Compare passwords
         const validPassword = await bcrypt.compare(password, user.password);
-        
+
         if (!validPassword) {
             return res.status(401).json({ error: 'Username atau password salah' });
         }
 
         // Create token
         const token = jwt.sign(
-            { id: user.id, username: user.username }, 
+            { id: user.id, username: user.username },
             process.env.JWT_SECRET || 'azhar123',
             { expiresIn: "24h" }
         );
 
-        res.json({ 
+        res.json({
             token,
             user: {
                 id: user.id,
