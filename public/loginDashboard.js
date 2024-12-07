@@ -32,7 +32,7 @@ document.getElementById("register-button").addEventListener("click", async (e) =
     }
 
     try {
-        const response = await fetch(`${baseURL}/register`, {
+        const response = await fetch('https://informasi-beasiswa.vercel.app/register', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -69,7 +69,7 @@ document.getElementById("login-button").addEventListener("click", async (e) => {
     }
 
     try {
-        const response = await fetch(`${baseURL}/login`, {
+        const response = await fetch('https://informasi-beasiswa.vercel.app/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
