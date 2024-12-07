@@ -24,12 +24,13 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 // Serve static files
-app.use(express.static(path.join(__dirname, 'public', 'loginDashboard.html')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
-    res.send('Selamat datang di server API Informasi Beasiswa!');
+    res.sendFile(path.join(__dirname, 'public', 'loginDashboard.html'));
 });
+
 
 
 // Health check endpoint
