@@ -13,6 +13,16 @@ loginLink.addEventListener('click', () => {
     logregBox.classList.remove('active');
 });
 
+// Function to show loading state
+const setLoadingState = (button, isLoading) => {
+    if (isLoading) {
+        button.disabled = true;
+        button.innerHTML = "Loading...";
+    } else {
+        button.disabled = false;
+        button.innerHTML = "Submit";
+    }
+};
 
 // Register functionality
 document.getElementById("register-button").addEventListener("click", async (e) => {
@@ -27,7 +37,12 @@ document.getElementById("register-button").addEventListener("click", async (e) =
         return;
     }
 
+    // Optional: You can add additional validation here (e.g., password length, username format)
+
     try {
+        const registerButton = document.getElementById("register-button");
+        setLoadingState(registerButton, true);
+
         const response = await fetch('https://informasi-beasiswa.vercel.app/register', {
             method: "POST",
             headers: {
@@ -49,6 +64,8 @@ document.getElementById("register-button").addEventListener("click", async (e) =
     } catch (error) {
         console.error("Error:", error);
         alert("Terjadi kesalahan pada server. Silakan coba lagi nanti.");
+    } finally {
+        setLoadingState(document.getElementById("register-button"), false);
     }
 });
 
@@ -65,6 +82,9 @@ document.getElementById("login-button").addEventListener("click", async (e) => {
     }
 
     try {
+        const loginButton = document.getElementById("login-button");
+        setLoadingState(loginButton, true);
+
         const response = await fetch('https://informasi-beasiswa.vercel.app/login', {
             method: "POST",
             headers: {
@@ -86,5 +106,7 @@ document.getElementById("login-button").addEventListener("click", async (e) => {
     } catch (error) {
         console.error("Error during login:", error);
         alert("Terjadi kesalahan pada server. Silakan periksa koneksi internet Anda.");
+    } finally {
+        setLoadingState(document.getElementById("login-button"), false);
     }
 });
