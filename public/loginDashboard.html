@@ -61,25 +61,21 @@
         <div class="logreg-box">
             <!-- Form login -->
             <div class="form-box login">
-                <form action="#">
+                <form action="#" onsubmit="return false">
                     <h2>Login</h2>
-
                     <div class="input-box">
                         <span class="icon"><i class="bi bi-person-fill"></i></span>
-                        <input id="login-username" type="text" required>
+                        <input id="login-username" name="username" type="text" required>
                         <label>Username</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class="bi bi-lock-fill"></i></span>
-                        <input id="login-password" type="password" required>
+                        <input id="login-password" name="password" type="password" required>
                         <label>Password</label>
                     </div>
                     <button type="submit" id="login-button" class="buttonn">Login</button>
-
                     <div class="login-register">
-                        <p>
-                            Don't have an account? <a href="#" class="register-link">Register Now</a>
-                        </p>
+                        <p>Don't have an account? <a href="#" class="register-link">Register Now</a></p>
                     </div>
                 </form>
             </div>
@@ -87,30 +83,26 @@
 
             <!-- Form Register -->
             <div class="form-box register">
-                <form action="#">
+                <form action="#" onsubmit="return false">
                     <h2>Register</h2>
-
                     <div class="input-box">
                         <span class="icon"><i class="bi bi-person-fill-check"></i></span>
-                        <input id="register-nama" type="text" required>
+                        <input id="register-nama" name="nama" type="text" required>
                         <label>Enter your name</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class="bi bi-person-fill"></i></span>
-                        <input id="register-username" type="text" required>
+                        <input id="register-username" name="username" type="text" required>
                         <label>Create Username</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class="bi bi-lock-fill"></i></span>
-                        <input id="register-password" type="password" required>
+                        <input id="register-password" name="password" type="password" required>
                         <label>Create password</label>
                     </div>
                     <button type="submit" id="register-button" class="buttonn">Register</button>
-
                     <div class="login-register">
-                        <p>
-                            Alredy have an account? <a href="#" class="login-link">Login Now</a>
-                        </p>
+                        <p>Already have an account? <a href="#" class="login-link">Login Now</a></p>
                     </div>
                 </form>
             </div>

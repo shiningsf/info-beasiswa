@@ -4,80 +4,114 @@ import cors from 'cors';
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import path from 'path';
-import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { pool } from './db.js';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors());
+// Middleware
+app.use(cors({
+    origin: process.env.NODE_ENV === 'production' 
+        ? ['https://informasi-beasiswa.vercel.app'] // Ganti dengan URL frontend Anda
+        : ['http://localhost:3000', 'http://localhost:5000'],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(bodyParser.json());
 
-// Static files
+// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Home route
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'loginDashboard.html'));
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'OK' });
 });
 
 // Register endpoint
 app.post('/register', async (req, res) => {
     const { nama, username, password } = req.body;
+
+    // Validation
     if (!nama || !username || !password) {
         return res.status(400).json({ error: "Kolom tidak boleh kosong!" });
     }
 
     try {
-        // Pastikan sudah ada index pada kolom username untuk pencarian yang lebih cepat
+        // Check if username already exists
         const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username]);
+        
         if (rows.length > 0) {
-            return res.status(409).json({ error: 'Username already exists' });
+            return res.status(400).json({ error: 'Username sudah digunakan' });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-        await pool.query('INSERT INTO tabel_beasiswa (nama, username, password) VALUES (?, ?, ?)', [
-            nama, username, hashedPassword,
-        ]);
+        // Hash the password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-        res.status(201).json({ message: 'User registered successfully' });
+        // Insert new user
+        await pool.query(
+            'INSERT INTO tabel_beasiswa (nama, username, password) VALUES (?, ?, ?)',
+            [nama, username, hashedPassword]
+        );
+
+        res.status(201).json({ message: 'Registrasi berhasil' });
     } catch (error) {
         console.error('Error registering user:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: 'Terjadi kesalahan pada server' });
     }
 });
 
 // Login endpoint
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
+
+    // Validation
     if (!username || !password) {
         return res.status(400).json({ error: "Kolom tidak boleh kosong!" });
     }
 
     try {
+        // Check if user exists
         const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username]);
+        
         if (rows.length === 0) {
-            return res.status(401).json({ error: 'Invalid username or password' });
+            return res.status(401).json({ error: 'Username atau password salah' });
         }
 
         const user = rows[0];
+
+        // Compare passwords
         const validPassword = await bcrypt.compare(password, user.password);
+        
         if (!validPassword) {
-            return res.status(401).json({ error: 'Invalid username or password' });
+            return res.status(401).json({ error: 'Username atau password salah' });
         }
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
+        // Create token
+        const token = jwt.sign(
+            { id: user.id, username: user.username }, 
+            process.env.JWT_SECRET || 'azhar123',
+            { expiresIn: "24h" }
+        );
+
+        res.json({ 
+            token,
+            user: {
+                id: user.id,
+                username: user.username,
+                nama: user.nama
+            }
+        });
     } catch (error) {
         console.error('Error logging in:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: 'Terjadi kesalahan pada server' });
     }
 });
 
-export default app;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});

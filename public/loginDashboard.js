@@ -1,21 +1,27 @@
-// Kode Memunculkan Form Login dan Form Register
-const logregBox = document.querySelector('.logreg-box');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
+// Form toggle functionality
+const logregBox = document.querySelector('.logreg-box')
+const loginLink = document.querySelector('.login-link')
+const registerLink = document.querySelector('.register-link')
 
-// Memunculkan Form Register
+// Show Register Form
 registerLink.addEventListener('click', () => {
-    logregBox.classList.add('active');
-});
+    logregBox.classList.add('active')
+})
 
-// Memunculkan Form Login
+// Show Login Form
 loginLink.addEventListener('click', () => {
-    logregBox.classList.remove('active');
-});
+    logregBox.classList.remove('active')
+})
 
+// Tambahkan baseURL untuk production dan development
+const baseURL = process.env.NODE_ENV === 'production'
+    ? 'https://informasi-beasiswa.vercel.app' // Ganti dengan URL Vercel Anda
+    : 'http://localhost:5000';
 
-// Kode BackEnd JavaScript Untuk Register
-document.getElementById("register-button").addEventListener("click", () => {
+// Register functionality
+document.getElementById("register-button").addEventListener("click", async (e) => {
+    e.preventDefault(); // Mencegah form submit default
+
     const nama = document.getElementById("register-nama").value.trim();
     const username = document.getElementById("register-username").value.trim();
     const password = document.getElementById("register-password").value.trim();
@@ -25,23 +31,35 @@ document.getElementById("register-button").addEventListener("click", () => {
         return;
     }
 
-    fetch("/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nama, username, password }),
-    })
-        .then((res) => res.json())
-        .then((data) => {
-            alert(data.message || data.error);
-        })
-        .catch((error) => {
-            console.error("Error:", error);
+    try {
+        const response = await fetch(`${baseURL}/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify({ nama, username, password }),
         });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Registrasi berhasil!");
+            // Redirect ke halaman login
+            document.querySelector('.login-link').click();
+        } else {
+            alert(data.error || "Terjadi kesalahan saat registrasi");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Terjadi kesalahan pada server");
+    }
 });
 
+// Login functionality
+document.getElementById("login-button").addEventListener("click", async (e) => {
+    e.preventDefault(); // Mencegah form submit default
 
-// Kode BackEnd JavaScript Untuk Login
-document.getElementById("login-button").addEventListener("click", () => {
     const username = document.getElementById("login-username").value.trim();
     const password = document.getElementById("login-password").value.trim();
 
@@ -50,18 +68,28 @@ document.getElementById("login-button").addEventListener("click", () => {
         return;
     }
 
-    fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-    })
-        .then((res) => res.json())
-        .then((data) => {
-            if (data.token) {
-                window.location.href = "dashboard.html";
-            } else {
-                alert(data.error);
-            }
-        })
-        .catch((err) => console.error("Error during login:", err));
+    try {
+        const response = await fetch(`${baseURL}/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.token) {
+            // Simpan token
+            localStorage.setItem('token', data.token);
+            // Redirect ke dashboard
+            window.location.href = "dashboard.html";
+        } else {
+            alert(data.error || "Username atau password salah");
+        }
+    } catch (error) {
+        console.error("Error during login:", error);
+        alert("Terjadi kesalahan pada server");
+    }
 });
