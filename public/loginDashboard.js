@@ -41,7 +41,7 @@ document.getElementById("register-button").addEventListener("click", async (e) =
         const registerButton = document.getElementById("register-button");
         setLoadingState(registerButton, true);
 
-        const response = await fetch('https://info-beasiswa.vercel.app/register', {
+        const response = await fetch('https://informasi-beasiswa.vercel.app/register', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -85,7 +85,7 @@ document.getElementById("login-button").addEventListener("click", async (e) => {
         const loginButton = document.getElementById("login-button");
         setLoadingState(loginButton, true);
 
-        const response = await fetch('https://info-beasiswa.vercel.app/login', {
+        const response = await fetch('https://informasi-beasiswa.vercel.app/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
