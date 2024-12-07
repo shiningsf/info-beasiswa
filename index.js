@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors({
-    origin: 'https://info-beasiswa.vercel.app/' // Hanya izinkan domain ini untuk mengakses server
+    origin: 'http://localhost:5000' // Hanya izinkan domain ini untuk mengakses server
 }));
 
 app.use(express.json());
