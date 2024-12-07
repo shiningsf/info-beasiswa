@@ -118,12 +118,13 @@
     background-position: center;
 }
 
-.container {
+/* untuk box login */
+.container { 
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 75%;
+    width: 50%;
     height: 550px;
     background: url('./img/2.jpg') no-repeat;
     background-size: cover;
@@ -174,6 +175,7 @@
 .text-judul p {
     font-size: 16px;
     margin: 20px 0;
+    text-align: justify;
 }
 
 .logreg-box .form-box {
