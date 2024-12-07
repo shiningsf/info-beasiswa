@@ -13,33 +13,45 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Middleware
-// app.use(cors({
-//     origin: process.env.NODE_ENV === 'production' 
-//         ? ['https://informasi-beasiswa.vercel.app/'] // Ganti dengan URL frontend Anda
-//         : ['http://localhost:3000', 'http://localhost:5000'],
-//     credentials: true
-// }));
-
 app.use(cors({
-    origin: 'https://informasi-beasiswa.vercel.app' // Hanya izinkan domain ini untuk mengakses server
+    origin: ['https://informasi-beasiswa.vercel.app', 'http://localhost:5000'],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
+
+// Security headers
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('X-Content-Type-Options', 'nosniff');
+    res.header('X-Frame-Options', 'DENY');
+    res.header('X-XSS-Protection', '1; mode=block');
+    next();
+});
 
 app.use(express.json());
 app.use(bodyParser.json());
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ 
+        error: 'Terjadi kesalahan pada server',
+        message: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
+});
+
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// Routes
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'loginDashboard.html'));
 });
 
-
-
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'OK' });
+    res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 // Register endpoint
@@ -53,9 +65,12 @@ app.post('/register', async (req, res) => {
 
     try {
         // Check if username already exists
-        const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username]);
+        const [existingUsers] = await pool.query(
+            'SELECT * FROM tabel_beasiswa WHERE username = ?', 
+            [username]
+        );
 
-        if (rows.length > 0) {
+        if (existingUsers.length > 0) {
             return res.status(400).json({ error: 'Username sudah digunakan' });
         }
 
@@ -69,10 +84,16 @@ app.post('/register', async (req, res) => {
             [nama, username, hashedPassword]
         );
 
-        res.status(201).json({ message: 'Registrasi berhasil' });
+        res.status(201).json({ 
+            message: 'Registrasi berhasil',
+            success: true
+        });
     } catch (error) {
         console.error('Error registering user:', error);
-        res.status(500).json({ error: 'Terjadi kesalahan pada server' });
+        res.status(500).json({ 
+            error: 'Terjadi kesalahan pada server',
+            details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        });
     }
 });
 
@@ -87,29 +108,43 @@ app.post('/login', async (req, res) => {
 
     try {
         // Check if user exists
-        const [rows] = await pool.query('SELECT * FROM tabel_beasiswa WHERE username = ?', [username]);
+        const [users] = await pool.query(
+            'SELECT * FROM tabel_beasiswa WHERE username = ?', 
+            [username]
+        );
 
-        if (rows.length === 0) {
+        if (users.length === 0) {
             return res.status(401).json({ error: 'Username atau password salah' });
         }
 
-        const user = rows[0];
+        const user = users[0];
 
         // Compare passwords
         const validPassword = await bcrypt.compare(password, user.password);
-
         if (!validPassword) {
             return res.status(401).json({ error: 'Username atau password salah' });
         }
 
         // Create token
         const token = jwt.sign(
-            { id: user.id, username: user.username },
+            { 
+                id: user.id, 
+                username: user.username 
+            },
             process.env.JWT_SECRET || 'azhar123',
             { expiresIn: "24h" }
         );
 
+        // Set cookie with token
+        res.cookie('auth_token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 24 * 60 * 60 * 1000 // 24 hours
+        });
+
         res.json({
+            success: true,
             token,
             user: {
                 id: user.id,
@@ -119,10 +154,19 @@ app.post('/login', async (req, res) => {
         });
     } catch (error) {
         console.error('Error logging in:', error);
-        res.status(500).json({ error: 'Terjadi kesalahan pada server' });
+        res.status(500).json({ 
+            error: 'Terjadi kesalahan pada server',
+            details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        });
     }
+});
+
+// Catch-all route for undefined routes
+app.use('*', (req, res) => {
+    res.status(404).json({ error: 'Halaman tidak ditemukan' });
 });
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
